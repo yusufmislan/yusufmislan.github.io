@@ -4,73 +4,172 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Coming Soon | Launching 31 August 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       background: radial-gradient(circle at 50% 50%, #0f0f1a, #050507);
       color: #00fff0;
       font-family: 'Orbitron', Arial, sans-serif;
       height: 100vh;
+      overflow-x: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      overflow: hidden;
+      padding: 0 1rem;
+      position: relative;
     }
+
+    /* 🌌 Animated star background */
+    .stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .stars span {
+      position: absolute;
+      display: block;
+      width: 2px;
+      height: 2px;
+      background: #00fff0;
+      opacity: 0.6;
+      animation: starMove 8s linear infinite;
+    }
+
+    @keyframes starMove {
+      from { transform: translateY(0px); }
+      to { transform: translateY(100vh); }
+    }
+
     h1 {
-      font-size: 3em;
+      font-size: clamp(2rem, 5vw, 4rem);
       text-shadow: 0 0 15px #00fff0, 0 0 30px #0077ff;
       margin-bottom: 1rem;
       animation: flicker 3s infinite;
+      z-index: 1;
     }
+
     p {
-      font-size: 1.2em;
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
       color: #d0d0d0;
       margin-bottom: 2rem;
+      line-height: 1.4;
+      z-index: 1;
     }
+
     #countdown {
       display: flex;
-      gap: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
       justify-content: center;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       letter-spacing: 2px;
+      z-index: 1;
     }
+
     .time-box {
       background: rgba(0, 255, 240, 0.1);
       border: 1px solid #00fff0;
       border-radius: 12px;
-      padding: 1rem 1.2rem;
+      padding: 1rem;
       min-width: 80px;
       box-shadow: 0 0 10px #00fff0 inset;
+      flex: 1 1 100px;
+      max-width: 120px;
     }
+
     .time-box span {
       display: block;
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
       color: #00fff0;
     }
+
     @keyframes flicker {
-      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        opacity: 1;
-      }
-      20%, 24%, 55% {
-        opacity: 0.4;
-      }
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+      20%, 24%, 55% { opacity: 0.4; }
     }
+
     footer {
       position: absolute;
-      bottom: 20px;
+      bottom: 60px;
+      font-size: 0.8rem;
+      color: #888;
+      text-align: center;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .radio-container {
+      position: absolute;
+      bottom: 10px;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+    }
+
+    .radio-container button {
+      background: rgba(0, 255, 240, 0.08);
+      border: 1px solid #00fff0;
+      border-radius: 8px;
+      color: #00fff0;
+      padding: 0.4rem 0.8rem;
       font-size: 0.9rem;
-      color: #666;
+      font-family: 'Orbitron', sans-serif;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .radio-container button:hover {
+      background: rgba(0, 255, 240, 0.2);
+      box-shadow: 0 0 10px #00fff0;
+    }
+
+    @media (max-height: 600px) {
+      body {
+        justify-content: flex-start;
+        padding-top: 4rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #countdown {
+        gap: 0.7rem;
+      }
+      .time-box {
+        padding: 0.8rem;
+        min-width: 70px;
+      }
+      footer {
+        font-size: 0.7rem;
+        bottom: 55px;
+      }
+      .radio-container button {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+      }
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Animated star background -->
+  <div class="stars" id="stars"></div>
+
   <h1>COMING SOON</h1>
   <p>Our next-gen website will go live on <strong>31 August 2026</strong></p>
 
@@ -81,9 +180,20 @@
     <div class="time-box"><span id="seconds">00</span>Seconds</div>
   </div>
 
-  <footer>© 2025 LetsJom. All rights reserved.</footer>
+  <footer>© <span id="year"></span> LetsJom. All rights reserved.</footer>
+
+  <!-- 🎧 Radio Links -->
+  <div class="radio-container">
+    <button onclick="openRadio('https://player.era.je/')">ERA FM</button>
+    <button onclick="openRadio('https://player.hotfm.audio/')">Hot FM</button>
+    <button onclick="openRadio('https://player.suria.my/')">Suria FM</button>
+    <button onclick="openRadio('https://player.sinar.my/')">Sinar FM</button>
+    <button onclick="openRadio('https://player.hitz.fm/')">Hitz FM</button>
+    <button onclick="openRadio('https://player.molekfm.audio/')">Molek FM</button>
+  </div>
 
   <script>
+    // 🕐 Countdown Timer
     const countdown = () => {
       const launchDate = new Date("August 31, 2026 00:00:00").getTime();
       const now = new Date().getTime();
@@ -99,13 +209,33 @@
       const m = Math.floor((gap % hour) / minute);
       const s = Math.floor((gap % minute) / second);
 
-      document.getElementById("days").innerText = d;
-      document.getElementById("hours").innerText = h;
-      document.getElementById("minutes").innerText = m;
-      document.getElementById("seconds").innerText = s;
+      document.getElementById("days").innerText = d.toString().padStart(2, '0');
+      document.getElementById("hours").innerText = h.toString().padStart(2, '0');
+      document.getElementById("minutes").innerText = m.toString().padStart(2, '0');
+      document.getElementById("seconds").innerText = s.toString().padStart(2, '0');
     };
-
+    countdown();
     setInterval(countdown, 1000);
+
+    // 📅 Auto year update
+    document.getElementById("year").innerText = new Date().getFullYear();
+
+    // 🌠 Starfield generator
+    const starContainer = document.getElementById('stars');
+    const numStars = 60;
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement('span');
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.animationDuration = 4 + Math.random() * 6 + 's';
+      star.style.opacity = Math.random();
+      starContainer.appendChild(star);
+    }
+
+    // 🎧 Open radio link
+    function openRadio(url) {
+      window.open(url, '_blank');
+    }
   </script>
 </body>
 </html>
