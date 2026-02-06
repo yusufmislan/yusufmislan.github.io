@@ -159,10 +159,11 @@ color:#777;
 
 <div class="channel-buttons">
 
-<button onclick="changeChannel('tv1')">TV1</button>
-<button onclick="changeChannel('tv2')">TV2</button>
-<button onclick="changeChannel('okey')">TV Okey</button>
-<button onclick="changeChannel('berita')">Berita RTM</button>
+<button onclick="changeChannel('LIVE1')">LIVE1</button>
+<button onclick="changeChannel('LIVE2')">LIVE2</button>
+<button onclick="changeChannel('LIVE3')">LIVE3</button>
+<button onclick="changeChannel('LIVE4')">LIVE4</button>
+<button onclick="changeChannel('LIVE5')">LIVE5</button>
 
 </div>
 
@@ -208,10 +209,11 @@ document.getElementById("year").innerText=new Date().getFullYear();
 function changeChannel(channel){
 
 const streams={
-tv1:"https://www.youtube.com/embed/1hJvA0hV3J0",
-tv2:"https://www.youtube.com/embed/z7SiAaN4ogw",
-okey:"https://www.youtube.com/embed/Wp5sP3r9QJQ",
-berita:"https://www.youtube.com/embed/4K3T0lXVSZQ"
+LIVE1:"https://www.youtube.com/watch?v=jfKfPfyJRdk",
+LIVE2:"https://www.youtube.com/watch?v=vYIYIVmOo3Q,
+LIVE3:"https://www.youtube.com/watch?v=QUCQNAx28Jo&list=RDQUCQNAx28Jo&start_radio=1,
+LIVE4:"https://www.youtube.com/watch?v=6DjNJ33ZgzQ"
+LIVE5:"https://www.youtube.com/watch?v=daqB3i9WYIY"
 };
 
 document.getElementById("tvPlayer").src=streams[channel];
@@ -222,3 +224,4 @@ document.getElementById("tvPlayer").src=streams[channel];
 
 </body>
 </html>
+
