@@ -1,118 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>LetsJom | Coming Soon | Official Website</title>
+<title>LetsJom | Coming Soon | Official Website</title>
 
-  <meta name="description" content="LetsJom — official upcoming website launch.">
-  <meta name="keywords" content="LetsJom, letsjom.my, Malaysia website">
-  <meta name="robots" content="index, follow">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-body {
-  background: radial-gradient(circle at 50% 50%, #0f0f1a, #050507);
-  color: #00fff0;
-  font-family: 'Orbitron', Arial, sans-serif;
-  height: 100vh;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 1rem;
+body{
+background: radial-gradient(circle at 50% 50%, #0f0f1a, #050507);
+color:#00fff0;
+font-family:'Orbitron',sans-serif;
+height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:1rem;
 }
 
-h1 {
-  font-size: clamp(2rem, 5vw, 4rem);
-  text-shadow: 0 0 15px #00fff0, 0 0 30px #0077ff;
-  margin-bottom: 1rem;
-  animation: flicker 3s infinite;
+h1{
+font-size:clamp(2rem,5vw,4rem);
+text-shadow:0 0 15px #00fff0,0 0 30px #0077ff;
+margin-bottom:1rem;
+animation:flicker 3s infinite;
 }
 
-p {
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
-  color: #d0d0d0;
-  margin-bottom: 2rem;
+p{
+color:#ccc;
+margin-bottom:2rem;
 }
 
-#countdown {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  font-size: 1.2rem;
+/* Countdown */
+
+#countdown{
+display:flex;
+gap:1rem;
+flex-wrap:wrap;
+justify-content:center;
 }
 
-.time-box {
-  background: rgba(0, 255, 240, 0.1);
-  border: 1px solid #00fff0;
-  border-radius: 12px;
-  padding: 1rem;
-  min-width: 80px;
-  box-shadow: 0 0 10px #00fff0 inset;
+.time-box{
+background:rgba(0,255,240,0.1);
+border:1px solid #00fff0;
+border-radius:12px;
+padding:1rem;
+min-width:80px;
+box-shadow:0 0 10px #00fff0 inset;
 }
 
-.time-box span {
-  display: block;
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
+.time-box span{
+display:block;
+font-size:2rem;
 }
 
 /* TV Section */
 
-.tv-section {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.tv-section{
+margin-top:2rem;
+display:flex;
+flex-direction:column;
+align-items:center;
 }
 
-.tv-title {
-  margin-bottom: 0.8rem;
-  font-size: 1.2rem;
-  text-shadow: 0 0 12px #00fff0;
+.tv-title{
+margin-bottom:1rem;
+font-size:1.2rem;
+text-shadow:0 0 12px #00fff0;
 }
 
-select {
-  background: rgba(0, 255, 240, 0.1);
-  border: 1px solid #00fff0;
-  color: #00fff0;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  font-family: 'Orbitron', sans-serif;
-  cursor: pointer;
+/* Channel Buttons */
+
+.channel-buttons{
+display:flex;
+flex-wrap:wrap;
+gap:0.5rem;
+justify-content:center;
+margin-bottom:1rem;
 }
 
-iframe {
-  margin-top: 1rem;
-  width: 380px;
-  height: 230px;
-  max-width: 90vw;
-  border: 1px solid #00fff0;
-  border-radius: 12px;
-  box-shadow: 0 0 15px #00fff0;
-  background: black;
+.channel-buttons button{
+background:rgba(0,255,240,0.1);
+border:1px solid #00fff0;
+color:#00fff0;
+padding:0.5rem 1rem;
+border-radius:8px;
+cursor:pointer;
+font-family:'Orbitron';
+transition:0.3s;
 }
 
-footer {
-  margin-top: 2rem;
-  font-size: 0.8rem;
-  color: #888;
+.channel-buttons button:hover{
+background:#00fff0;
+color:black;
 }
 
-@keyframes flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
-  20%, 24%, 55% { opacity: 0.4; }
+/* Player */
+
+.player-wrapper{
+position:relative;
+width:420px;
+max-width:95vw;
+aspect-ratio:16/9;
+border:1px solid #00fff0;
+border-radius:12px;
+box-shadow:0 0 15px #00fff0;
+overflow:hidden;
+background:black;
+}
+
+.player-wrapper iframe{
+width:100%;
+height:100%;
+border:none;
+}
+
+footer{
+margin-top:2rem;
+font-size:0.8rem;
+color:#777;
+}
+
+@keyframes flicker{
+0%,19%,21%,23%,25%,54%,56%,100%{opacity:1;}
+20%,24%,55%{opacity:0.4;}
 }
 
 </style>
@@ -125,69 +146,76 @@ footer {
 
 <!-- Countdown -->
 <div id="countdown">
-  <div class="time-box"><span id="days">00</span>Days</div>
-  <div class="time-box"><span id="hours">00</span>Hours</div>
-  <div class="time-box"><span id="minutes">00</span>Minutes</div>
-  <div class="time-box"><span id="seconds">00</span>Seconds</div>
+<div class="time-box"><span id="days">00</span>Days</div>
+<div class="time-box"><span id="hours">00</span>Hours</div>
+<div class="time-box"><span id="minutes">00</span>Minutes</div>
+<div class="time-box"><span id="seconds">00</span>Seconds</div>
 </div>
 
-<!-- 📺 RTM LIVE TV HUB -->
+<!-- TV HUB -->
 <div class="tv-section">
 
-  <div class="tv-title">📺 RTM Malaysia Live TV</div>
+<div class="tv-title">📺 RTM Malaysia Live TV</div>
 
-  <select onchange="changeTV(this.value)">
-    <option value="">-- Select Channel --</option>
-    <option value="https://rtmklik.rtm.gov.my/live/tv1">RTM TV1</option>
-    <option value="https://rtmklik.rtm.gov.my/live/tv2">RTM TV2</option>
-    <option value="https://rtmklik.rtm.gov.my/live/tv6">TV Okey</option>
-    <option value="https://rtmklik.rtm.gov.my/live/berita">Berita RTM</option>
-    <option value="https://rtmklik.rtm.gov.my/live/sukan">Sukan RTM</option>
-  </select>
+<div class="channel-buttons">
 
-  <iframe id="tvFrame" src=""></iframe>
+<button onclick="changeChannel('tv1')">TV1</button>
+<button onclick="changeChannel('tv2')">TV2</button>
+<button onclick="changeChannel('okey')">TV Okey</button>
+<button onclick="changeChannel('berita')">Berita RTM</button>
 
 </div>
 
-<footer>© <span id="year"></span> LetsJom. All rights reserved.</footer>
+<div class="player-wrapper">
+<iframe id="tvPlayer"
+allow="autoplay; fullscreen"
+allowfullscreen
+src="https://www.youtube.com/embed/1hJvA0hV3J0">
+</iframe>
+</div>
+
+</div>
+
+<footer>© <span id="year"></span> LetsJom</footer>
 
 <script>
 
-/* Countdown Timer */
-function countdown() {
-  const launchDate = new Date("August 31, 2026 00:00:00").getTime();
-  const now = new Date().getTime();
-  const gap = launchDate - now;
+/* Countdown */
+function countdown(){
+const launch=new Date("Aug 31 2026 00:00:00").getTime();
+const now=new Date().getTime();
+const gap=launch-now;
 
-  const second = 1000;
-  const minute = second * 60;
-  const hour = minute * 60;
-  const day = hour * 24;
+const s=1000;
+const m=s*60;
+const h=m*60;
+const d=h*24;
 
-  document.getElementById("days").innerText =
-    Math.floor(gap / day).toString().padStart(2, '0');
-
-  document.getElementById("hours").innerText =
-    Math.floor((gap % day) / hour).toString().padStart(2, '0');
-
-  document.getElementById("minutes").innerText =
-    Math.floor((gap % hour) / minute).toString().padStart(2, '0');
-
-  document.getElementById("seconds").innerText =
-    Math.floor((gap % minute) / second).toString().padStart(2, '0');
+document.getElementById("days").innerText=Math.floor(gap/d);
+document.getElementById("hours").innerText=Math.floor((gap%d)/h);
+document.getElementById("minutes").innerText=Math.floor((gap%h)/m);
+document.getElementById("seconds").innerText=Math.floor((gap%m)/s);
 }
 
-setInterval(countdown, 1000);
+setInterval(countdown,1000);
 countdown();
 
-/* Auto Year */
-document.getElementById("year").innerText = new Date().getFullYear();
+/* Year */
+document.getElementById("year").innerText=new Date().getFullYear();
 
-/* Change TV Channel */
-function changeTV(channel){
-  if(channel){
-    document.getElementById("tvFrame").src = channel;
-  }
+/* Channel Switch */
+
+function changeChannel(channel){
+
+const streams={
+tv1:"https://www.youtube.com/embed/1hJvA0hV3J0",
+tv2:"https://www.youtube.com/embed/z7SiAaN4ogw",
+okey:"https://www.youtube.com/embed/Wp5sP3r9QJQ",
+berita:"https://www.youtube.com/embed/4K3T0lXVSZQ"
+};
+
+document.getElementById("tvPlayer").src=streams[channel];
+
 }
 
 </script>
